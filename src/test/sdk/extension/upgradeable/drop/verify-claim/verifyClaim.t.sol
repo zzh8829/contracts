@@ -15,11 +15,10 @@ contract MyDropUpg is Drop {
         uint256 _pricePerToken
     ) internal override {}
 
-    function _transferTokensOnClaim(address _to, uint256 _quantityBeingClaimed)
-        internal
-        override
-        returns (uint256 startTokenId)
-    {}
+    function _transferTokensOnClaim(
+        address _to,
+        uint256 _quantityBeingClaimed
+    ) internal override returns (uint256 startTokenId) {}
 
     function _canSetClaimConditions() internal view override returns (bool) {
         return true;
@@ -34,11 +33,7 @@ contract MyDropUpg is Drop {
         _dropStorage().claimCondition.conditions[_conditionId] = condition;
     }
 
-    function setSupplyClaimedByWallet(
-        uint256 _conditionId,
-        address _wallet,
-        uint256 _supplyClaimed
-    ) public {
+    function setSupplyClaimedByWallet(uint256 _conditionId, address _wallet, uint256 _supplyClaimed) public {
         _dropStorage().claimCondition.supplyClaimedByWallet[_conditionId][_wallet] = _supplyClaimed;
     }
 }

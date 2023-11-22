@@ -205,11 +205,7 @@ abstract contract DropSinglePhase1155 is IDropSinglePhase1155 {
     ) internal virtual;
 
     /// @dev Transfers the NFTs being claimed.
-    function _transferTokensOnClaim(
-        address _to,
-        uint256 _tokenId,
-        uint256 _quantityBeingClaimed
-    ) internal virtual;
+    function _transferTokensOnClaim(address _to, uint256 _tokenId, uint256 _quantityBeingClaimed) internal virtual;
 
     function _canSetClaimConditions() internal view virtual returns (bool);
 }

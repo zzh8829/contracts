@@ -218,11 +218,7 @@ contract DropERC20 is
     }
 
     /// @dev Runs on every transfer.
-    function _beforeTokenTransfer(
-        address from,
-        address to,
-        uint256 amount
-    ) internal override(ERC20Upgradeable) {
+    function _beforeTokenTransfer(address from, address to, uint256 amount) internal override(ERC20Upgradeable) {
         super._beforeTokenTransfer(from, to, amount);
 
         if (!hasRole(transferRole, address(0)) && from != address(0) && to != address(0)) {

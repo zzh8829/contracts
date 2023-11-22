@@ -141,13 +141,7 @@ contract EditionStake is
                         ERC 165 / 721 logic
     //////////////////////////////////////////////////////////////*/
 
-    function onERC1155Received(
-        address,
-        address,
-        uint256,
-        uint256,
-        bytes calldata
-    ) external view returns (bytes4) {
+    function onERC1155Received(address, address, uint256, uint256, bytes calldata) external view returns (bytes4) {
         require(isStaking == 2, "Direct transfer");
         return this.onERC1155Received.selector;
     }
@@ -160,12 +154,9 @@ contract EditionStake is
         bytes calldata data
     ) external returns (bytes4) {}
 
-    function supportsInterface(bytes4 interfaceId)
-        public
-        view
-        override(ERC165Upgradeable, IERC165Upgradeable)
-        returns (bool)
-    {
+    function supportsInterface(
+        bytes4 interfaceId
+    ) public view override(ERC165Upgradeable, IERC165Upgradeable) returns (bool) {
         return interfaceId == type(IERC1155ReceiverUpgradeable).interfaceId || super.supportsInterface(interfaceId);
     }
 

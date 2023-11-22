@@ -622,11 +622,10 @@ contract SignatureDropTest is BaseTest {
                         Signature Mint Tests
     //////////////////////////////////////////////////////////////*/
 
-    function signMintRequest(SignatureDrop.MintRequest memory mintrequest, uint256 privateKey)
-        internal
-        view
-        returns (bytes memory)
-    {
+    function signMintRequest(
+        SignatureDrop.MintRequest memory mintrequest,
+        uint256 privateKey
+    ) internal view returns (bytes memory) {
         bytes memory encodedRequest = abi.encode(
             typehashMintRequest,
             mintrequest.to,
@@ -1354,12 +1353,7 @@ contract MaliciousReceiver {
         alp = _alp;
     }
 
-    function onERC721Received(
-        address,
-        address,
-        uint256,
-        bytes calldata
-    ) external returns (bytes4) {
+    function onERC721Received(address, address, uint256, bytes calldata) external returns (bytes4) {
         if (claim && loop) {
             loop = false;
             claim = false;

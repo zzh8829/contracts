@@ -62,11 +62,7 @@ contract TWFactory is Multicall, ERC2771Context, AccessControlEnumerable, IContr
      *  @dev Deploys a proxy at a deterministic address by taking in `salt` as a parameter.
      *       Proxy points to the latest version of the given contract type.
      */
-    function deployProxyDeterministic(
-        bytes32 _type,
-        bytes memory _data,
-        bytes32 _salt
-    ) public returns (address) {
+    function deployProxyDeterministic(bytes32 _type, bytes memory _data, bytes32 _salt) public returns (address) {
         address _implementation = implementation[_type][currentVersion[_type]];
         return deployProxyByImplementation(_implementation, _data, _salt);
     }

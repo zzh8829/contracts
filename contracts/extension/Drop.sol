@@ -49,11 +49,10 @@ abstract contract Drop is IDrop {
     }
 
     /// @dev Lets a contract admin set claim conditions.
-    function setClaimConditions(ClaimCondition[] calldata _conditions, bool _resetClaimEligibility)
-        external
-        virtual
-        override
-    {
+    function setClaimConditions(
+        ClaimCondition[] calldata _conditions,
+        bool _resetClaimEligibility
+    ) external virtual override {
         if (!_canSetClaimConditions()) {
             revert("Not authorized");
         }
@@ -192,11 +191,10 @@ abstract contract Drop is IDrop {
     }
 
     /// @dev Returns the supply claimed by claimer for a given conditionId.
-    function getSupplyClaimedByWallet(uint256 _conditionId, address _claimer)
-        public
-        view
-        returns (uint256 supplyClaimedByWallet)
-    {
+    function getSupplyClaimedByWallet(
+        uint256 _conditionId,
+        address _claimer
+    ) public view returns (uint256 supplyClaimedByWallet) {
         supplyClaimedByWallet = claimCondition.supplyClaimedByWallet[_conditionId][_claimer];
     }
 
@@ -242,10 +240,10 @@ abstract contract Drop is IDrop {
     ) internal virtual;
 
     /// @dev Transfers the NFTs being claimed.
-    function _transferTokensOnClaim(address _to, uint256 _quantityBeingClaimed)
-        internal
-        virtual
-        returns (uint256 startTokenId);
+    function _transferTokensOnClaim(
+        address _to,
+        uint256 _quantityBeingClaimed
+    ) internal virtual returns (uint256 startTokenId);
 
     /// @dev Determine what wallet can update claim conditions
     function _canSetClaimConditions() internal view virtual returns (bool);

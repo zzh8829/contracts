@@ -283,34 +283,21 @@ contract ERC721AUpgradeable is Initializable, Context, ERC165, IERC721A {
     /**
      * @dev See {IERC721-transferFrom}.
      */
-    function transferFrom(
-        address from,
-        address to,
-        uint256 tokenId
-    ) public virtual override {
+    function transferFrom(address from, address to, uint256 tokenId) public virtual override {
         _transfer(from, to, tokenId);
     }
 
     /**
      * @dev See {IERC721-safeTransferFrom}.
      */
-    function safeTransferFrom(
-        address from,
-        address to,
-        uint256 tokenId
-    ) public virtual override {
+    function safeTransferFrom(address from, address to, uint256 tokenId) public virtual override {
         safeTransferFrom(from, to, tokenId, "");
     }
 
     /**
      * @dev See {IERC721-safeTransferFrom}.
      */
-    function safeTransferFrom(
-        address from,
-        address to,
-        uint256 tokenId,
-        bytes memory _data
-    ) public virtual override {
+    function safeTransferFrom(address from, address to, uint256 tokenId, bytes memory _data) public virtual override {
         _transfer(from, to, tokenId);
         if (to.isContract())
             if (!_checkContractOnERC721Received(from, to, tokenId, _data)) {
@@ -348,11 +335,7 @@ contract ERC721AUpgradeable is Initializable, Context, ERC165, IERC721A {
      *
      * Emits a {Transfer} event.
      */
-    function _safeMint(
-        address to,
-        uint256 quantity,
-        bytes memory _data
-    ) internal {
+    function _safeMint(address to, uint256 quantity, bytes memory _data) internal {
         ERC721AStorage.Data storage data = ERC721AStorage.erc721AStorage();
 
         uint256 startTokenId = data._currentIndex;
@@ -444,11 +427,7 @@ contract ERC721AUpgradeable is Initializable, Context, ERC165, IERC721A {
      *
      * Emits a {Transfer} event.
      */
-    function _transfer(
-        address from,
-        address to,
-        uint256 tokenId
-    ) private {
+    function _transfer(address from, address to, uint256 tokenId) private {
         ERC721AStorage.Data storage data = ERC721AStorage.erc721AStorage();
 
         TokenOwnership memory prevOwnership = _ownershipOf(tokenId);
@@ -575,11 +554,7 @@ contract ERC721AUpgradeable is Initializable, Context, ERC165, IERC721A {
      *
      * Emits a {Approval} event.
      */
-    function _approve(
-        address to,
-        uint256 tokenId,
-        address owner
-    ) private {
+    function _approve(address to, uint256 tokenId, address owner) private {
         ERC721AStorage.Data storage data = ERC721AStorage.erc721AStorage();
         data._tokenApprovals[tokenId] = to;
         emit Approval(owner, to, tokenId);
@@ -628,12 +603,7 @@ contract ERC721AUpgradeable is Initializable, Context, ERC165, IERC721A {
      * - When `to` is zero, `tokenId` will be burned by `from`.
      * - `from` and `to` are never both zero.
      */
-    function _beforeTokenTransfers(
-        address from,
-        address to,
-        uint256 startTokenId,
-        uint256 quantity
-    ) internal virtual {}
+    function _beforeTokenTransfers(address from, address to, uint256 startTokenId, uint256 quantity) internal virtual {}
 
     /**
      * @dev Hook that is called after a set of serially-ordered token ids have been transferred. This includes
@@ -651,10 +621,5 @@ contract ERC721AUpgradeable is Initializable, Context, ERC165, IERC721A {
      * - When `to` is zero, `tokenId` has been burned by `from`.
      * - `from` and `to` are never both zero.
      */
-    function _afterTokenTransfers(
-        address from,
-        address to,
-        uint256 startTokenId,
-        uint256 quantity
-    ) internal virtual {}
+    function _afterTokenTransfers(address from, address to, uint256 startTokenId, uint256 quantity) internal virtual {}
 }

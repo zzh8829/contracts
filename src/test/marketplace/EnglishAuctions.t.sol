@@ -2095,12 +2095,7 @@ contract BreitwieserTheCreator is BaseTest, IERC721Receiver, IExtension {
     address public seller;
     address public buyer;
 
-    function onERC721Received(
-        address,
-        address,
-        uint256,
-        bytes calldata
-    ) external pure returns (bytes4) {
+    function onERC721Received(address, address, uint256, bytes calldata) external pure returns (bytes4) {
         return IERC721Receiver.onERC721Received.selector;
     }
 

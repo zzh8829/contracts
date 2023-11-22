@@ -21,11 +21,7 @@ contract DummyUpgradeable {
 
 contract TWNotMinimalFactory {
     /// @dev Deploys a proxy that points to the given implementation.
-    function deployProxyByImplementation(
-        address _implementation,
-        bytes memory _data,
-        bytes32 _salt
-    ) public {
+    function deployProxyByImplementation(address _implementation, bytes memory _data, bytes32 _salt) public {
         address deployedProxy = Clones.cloneDeterministic(_implementation, _salt);
 
         if (_data.length > 0) {

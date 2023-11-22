@@ -184,11 +184,10 @@ contract ERC721LazyMint is
      *
      * @return startTokenId The tokenId of the first NFT minted.
      */
-    function _transferTokensOnClaim(address _receiver, uint256 _quantity)
-        internal
-        virtual
-        returns (uint256 startTokenId)
-    {
+    function _transferTokensOnClaim(
+        address _receiver,
+        uint256 _quantity
+    ) internal virtual returns (uint256 startTokenId) {
         startTokenId = _currentIndex;
         _safeMint(_receiver, _quantity);
     }

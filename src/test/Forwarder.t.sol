@@ -47,11 +47,10 @@ contract ForwarderTest is BaseTest {
                 Regular `Forwarder`: chainId in typehash
     //////////////////////////////////////////////////////////////*/
 
-    function signForwarderRequest(Forwarder.ForwardRequest memory forwardRequest, uint256 privateKey)
-        internal
-        view
-        returns (bytes memory)
-    {
+    function signForwarderRequest(
+        Forwarder.ForwardRequest memory forwardRequest,
+        uint256 privateKey
+    ) internal view returns (bytes memory) {
         bytes memory encodedRequest = abi.encode(
             typehashForwardRequest,
             forwardRequest.from,

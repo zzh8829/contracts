@@ -183,13 +183,9 @@ contract Pack is
     }
 
     /// @dev See ERC 165
-    function supportsInterface(bytes4 interfaceId)
-        public
-        view
-        virtual
-        override(ERC1155Receiver, ERC1155Upgradeable, IERC165)
-        returns (bool)
-    {
+    function supportsInterface(
+        bytes4 interfaceId
+    ) public view virtual override(ERC1155Receiver, ERC1155Upgradeable, IERC165) returns (bool) {
         return
             super.supportsInterface(interfaceId) ||
             type(IERC2981Upgradeable).interfaceId == interfaceId ||
@@ -386,11 +382,9 @@ contract Pack is
     //////////////////////////////////////////////////////////////*/
 
     /// @dev Returns the underlying contents of a pack.
-    function getPackContents(uint256 _packId)
-        public
-        view
-        returns (Token[] memory contents, uint256[] memory perUnitAmounts)
-    {
+    function getPackContents(
+        uint256 _packId
+    ) public view returns (Token[] memory contents, uint256[] memory perUnitAmounts) {
         PackInfo memory pack = packInfo[_packId];
         uint256 total = getTokenCountOfBundle(_packId);
         contents = new Token[](total);

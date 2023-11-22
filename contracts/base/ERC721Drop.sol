@@ -254,12 +254,10 @@ contract ERC721Drop is
      * @param _to                    The address to which the NFTs are being transferred.
      * @param _quantityBeingClaimed  The quantity of NFTs being claimed.
      */
-    function _transferTokensOnClaim(address _to, uint256 _quantityBeingClaimed)
-        internal
-        virtual
-        override
-        returns (uint256 startTokenId)
-    {
+    function _transferTokensOnClaim(
+        address _to,
+        uint256 _quantityBeingClaimed
+    ) internal virtual override returns (uint256 startTokenId) {
         startTokenId = _currentIndex;
         _safeMint(_to, _quantityBeingClaimed);
     }

@@ -81,11 +81,7 @@ abstract contract TokenBundle is ITokenBundle {
     }
 
     /// @dev Lets the calling contract update a token in a bundle for a unique bundle id and index.
-    function _updateTokenInBundle(
-        Token memory _tokenToBind,
-        uint256 _bundleId,
-        uint256 _index
-    ) internal {
+    function _updateTokenInBundle(Token memory _tokenToBind, uint256 _bundleId, uint256 _index) internal {
         require(_index < bundle[_bundleId].count, "index DNE");
         _checkTokenType(_tokenToBind);
         bundle[_bundleId].tokens[_index] = _tokenToBind;

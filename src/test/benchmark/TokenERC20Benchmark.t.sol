@@ -80,11 +80,10 @@ contract TokenERC20BenchmarkTest is BaseTest {
         _signature = signMintRequest(_mintrequest, privateKey);
     }
 
-    function signMintRequest(TokenERC20.MintRequest memory _request, uint256 _privateKey)
-        internal
-        view
-        returns (bytes memory)
-    {
+    function signMintRequest(
+        TokenERC20.MintRequest memory _request,
+        uint256 _privateKey
+    ) internal view returns (bytes memory) {
         bytes memory encodedRequest = abi.encode(
             typehashMintRequest,
             _request.to,

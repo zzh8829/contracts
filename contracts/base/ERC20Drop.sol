@@ -112,12 +112,10 @@ contract ERC20Drop is ContractMetadata, Multicall, Ownable, ERC20Permit, Primary
     }
 
     /// @dev Transfers the tokens being claimed.
-    function _transferTokensOnClaim(address _to, uint256 _quantityBeingClaimed)
-        internal
-        virtual
-        override
-        returns (uint256)
-    {
+    function _transferTokensOnClaim(
+        address _to,
+        uint256 _quantityBeingClaimed
+    ) internal virtual override returns (uint256) {
         _mint(_to, _quantityBeingClaimed);
         return 0;
     }

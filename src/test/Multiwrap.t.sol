@@ -18,11 +18,7 @@ contract MultiwrapReentrant is MockERC20, ITokenBundle {
         multiwrap = Multiwrap(_multiwrap);
     }
 
-    function transferFrom(
-        address from,
-        address to,
-        uint256 amount
-    ) public override returns (bool) {
+    function transferFrom(address from, address to, uint256 amount) public override returns (bool) {
         multiwrap.unwrap(0, address(this));
         return super.transferFrom(from, to, amount);
     }

@@ -48,11 +48,10 @@ contract ForwarderChainlessDomainTest is BaseTest {
        Updated `Forwarder`: chainId in ForwardRequest, not typehash.
     //////////////////////////////////////////////////////////////*/
 
-    function signForwarderRequest(ForwarderChainlessDomain.ForwardRequest memory forwardRequest, uint256 privateKey)
-        internal
-        view
-        returns (bytes memory)
-    {
+    function signForwarderRequest(
+        ForwarderChainlessDomain.ForwardRequest memory forwardRequest,
+        uint256 privateKey
+    ) internal view returns (bytes memory) {
         bytes memory encodedRequest = abi.encode(
             typehashForwardRequest,
             forwardRequest.from,

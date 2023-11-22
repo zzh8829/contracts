@@ -47,12 +47,7 @@ contract MyBurnToClaimDrop721Logic is BurnToClaimDrop721Logic {
         return _canSetBurnToClaim();
     }
 
-    function beforeTokenTransfers(
-        address from,
-        address to,
-        uint256 startTokenId,
-        uint256 quantity
-    ) external {
+    function beforeTokenTransfers(address from, address to, uint256 startTokenId, uint256 quantity) external {
         _beforeTokenTransfers(from, to, startTokenId, quantity);
     }
 

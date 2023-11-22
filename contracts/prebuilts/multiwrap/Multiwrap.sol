@@ -142,13 +142,9 @@ contract Multiwrap is
     }
 
     /// @dev See ERC 165
-    function supportsInterface(bytes4 interfaceId)
-        public
-        view
-        virtual
-        override(ERC1155Receiver, ERC721EnumerableUpgradeable, IERC165)
-        returns (bool)
-    {
+    function supportsInterface(
+        bytes4 interfaceId
+    ) public view virtual override(ERC1155Receiver, ERC721EnumerableUpgradeable, IERC165) returns (bool) {
         return
             super.supportsInterface(interfaceId) ||
             interfaceId == type(IERC721Upgradeable).interfaceId ||
@@ -233,11 +229,7 @@ contract Multiwrap is
     /**
      * @dev See {ERC721-_beforeTokenTransfer}.
      */
-    function _beforeTokenTransfer(
-        address from,
-        address to,
-        uint256 tokenId
-    ) internal virtual override {
+    function _beforeTokenTransfer(address from, address to, uint256 tokenId) internal virtual override {
         super._beforeTokenTransfer(from, to, tokenId);
 
         // if transfer is restricted on the contract, we still want to allow burning and minting

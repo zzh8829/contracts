@@ -90,13 +90,9 @@ contract BurnToClaimDrop721Logic is
     }
 
     /// @notice See ERC 165
-    function supportsInterface(bytes4 interfaceId)
-        public
-        view
-        virtual
-        override(ERC721AUpgradeable, IERC165)
-        returns (bool)
-    {
+    function supportsInterface(
+        bytes4 interfaceId
+    ) public view virtual override(ERC721AUpgradeable, IERC165) returns (bool) {
         return super.supportsInterface(interfaceId) || type(IERC2981).interfaceId == interfaceId;
     }
 
@@ -242,11 +238,10 @@ contract BurnToClaimDrop721Logic is
     }
 
     /// @dev Transfers the NFTs being claimed.
-    function _transferTokensOnClaim(address _to, uint256 _quantityBeingClaimed)
-        internal
-        override
-        returns (uint256 startTokenId)
-    {
+    function _transferTokensOnClaim(
+        address _to,
+        uint256 _quantityBeingClaimed
+    ) internal override returns (uint256 startTokenId) {
         ERC721AStorage.Data storage data = ERC721AStorage.erc721AStorage();
         startTokenId = data._currentIndex;
         _safeMint(_to, _quantityBeingClaimed);

@@ -158,11 +158,7 @@ contract AirdropERC1155Claimable is
     }
 
     /// @dev Transfers the tokens being claimed.
-    function _transferClaimedTokens(
-        address _to,
-        uint256 _quantityBeingClaimed,
-        uint256 _tokenId
-    ) internal {
+    function _transferClaimedTokens(address _to, uint256 _quantityBeingClaimed, uint256 _tokenId) internal {
         // if transfer claimed tokens is called when `to != msg.sender`, it'd use msg.sender's limits.
         // behavior would be similar to `msg.sender` mint for itself, then transfer to `_to`.
         supplyClaimedByWallet[_tokenId][_msgSender()] += _quantityBeingClaimed;
